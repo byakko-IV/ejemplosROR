@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-
+    user ||= User.new # guest user (not logged in)
     if user.admin?
       #Grant all permissions on all models on the aplication
       can :manage, :all
