@@ -1,0 +1,16 @@
+<div id="comment-box" class="col-xs-12">
+	<p class="col-xs-12">
+		<strong>Commenter: </strong>
+		<%= comment.user.email %>
+	</p>
+	<p class="col-xs-12">
+		<strong>Comment: </strong>
+		<%= comment.body %>
+	</p>
+	<p>
+	  <% if can? :destroy, comment %>
+	  	<%= link_to 'Destroy Comment', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+	  <% end %>
+	</p>
+	<hr class="col-xs-12">
+</div>

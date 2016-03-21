@@ -1,0 +1,33 @@
+<h1 class="col-xs-12 center-xs">
+	<%= @article.title %>
+</h1>
+<p class="col-xs-12">
+	<%= @article.text %>
+</p>
+
+<% unless @article.user.nil? %>
+	<p class="col-xs-12">
+		<strong>Escrito por: </strong>
+		<%= @article.user.email %>
+	</p>
+<% end %>
+
+<% @article.categories.each do |category| %>
+	<p class="col-md-12">
+		<%= link_to category.name, category, style: "color:#{category.color};" %>
+	</p>
+<% end %>
+<h2 class="col-xs-12">Comments</h2>
+<hr class="col-xs-12">
+<%= render @article.comments %>
+
+<div class="col-xs-12">
+	<h2>Add a comment:</h2>
+	<%= render 'comments/form' %>
+</div>
+<div class="col-xs-12 center-xs">
+	<% if can? :update, @article %>
+		<%= link_to 'Edit', edit_article_path(@article) %> |
+	<% end %>
+	<%= link_to 'Back', articles_path %>
+</div>

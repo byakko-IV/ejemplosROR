@@ -1,0 +1,8 @@
+<%= form_for([@article, @article.comments.build], remote: true, html: {id: "comments-form"}, :format => :json) do |f| %>
+	<p>
+		<%= f.text_area :body %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
